@@ -39,6 +39,7 @@ ___
  - [Feature Calculation](#feature-calculation)
  - [Train Test Split](#train-test-split)
  - [Elbow Method Clusters](#elbow-method-clusters)
+ - [Treinando Modelo K-Means](#treinando-modelo-k-means)
 
 ### Importando Libraries:
 > inicialmente para este projeto realizou-se o import das bibliotecas que serao utilizadas para machine learning, data wralling e data visualization dos dados, utilizou-se os comandos abaixo para esta etapa:
@@ -137,3 +138,28 @@ x_test = data_test.loc[:,'adx':'neg_dir_mov']
    
 <p align="center">
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-3.png?raw=true"  width="800" height = "460">
+
+### Treinando Modelo K-Means:
+
+> Em seguida realizou-se o treinando do modelo com 5 clusters, e visualizou-se os clustres em um plot 3d e tambem o histograma de frequencia para os clusters 
+
+```
+#fit k-means model:
+kmodel = KMeans(n_clusters = 5, random_state = 1)
+clusters = kmodel.fit(k)
+```
+
+```
+#data visualization:
+df = data_train.loc[:,'adx':]
+
+fig = px.scatter_3d(df, x='pos_dir_mov', y='neg_dir_mov', z='adx',
+                    color='clusters',height=500, width=800, title = 'Clusters Plot: ')
+
+fig.update_layout(margin=dict(l=10, r=10, t=50, b=10))
+
+fig.show()
+```
+   
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/cluster_3d.png?raw=true"  width="740" height = "460">
