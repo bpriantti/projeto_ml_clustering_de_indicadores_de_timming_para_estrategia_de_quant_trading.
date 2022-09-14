@@ -33,17 +33,17 @@ ___
 
 __Contens:__
 
-# Contents
- - [Specification](#specification) 
+## Contents
+ - [Import Libs Projeto](#Import Libs Projeto) 
  - [Dependencies Title](#dependencies-title) 
 
-## Specification
+### Import Libs Projeto
 Example text blah. Example text blah. Example text blah. Example text blah. 
 Example text blah. Example text blah. Example text blah. Example text blah. 
 Example text blah. Example text blah. Example text blah. Example text blah. 
 Example text blah. Example text blah. 
 
-## Dependencies Title
+### Dependencies Title
 Example text blah. Example text blah. Example text blah. Example text blah. 
 Example text blah. Example text blah. Example text blah. Example text blah. 
 Example text blah. Example text blah. Example text blah. Example text blah. 
