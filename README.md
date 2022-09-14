@@ -36,6 +36,9 @@ ___
  - [Data Request](#data-request) 
  - [Data Wralling](#data-wralling)
  - [Data Visualization](#data-visualization)
+ - [Feature Calculation](#feature-calculation)
+ - [Train Test Split](#train-test-split)
+ - [Elbow Method Clusters](#elbow-method-clusters)
 
 ### Importando Libraries:
 > inicialmente para este projeto realizou-se o import das bibliotecas que serao utilizadas para machine learning, data wralling e data visualization dos dados, utilizou-se os comandos abaixo para esta etapa:
@@ -91,4 +94,42 @@ database.dropna(inplace=True)
 > Apos o tratamento dos dados no processo de data wralling, realizou-se o processo de Data Visualization, que consiste em visualizar a base de dados, para o caso atual foi realizado esta etapa para verificar possiveis incosistencia visivieis na serie historica.
 
 <p align="center">
-   <img src="https://github.com/bpriantti/projeto_asset_allocation_otimizacao_e_backtest_carteiras_de_investimento/blob/main/files_/image_1.png?raw=true"  width="800" height = "220">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-1.png?raw=true"  width="800" height = "460">
+   
+### Feature Calculation: 
+
+> Nesta Etapa realizou-se o calculo das features DI+,DI-,ADX e Retorno Futuro em 2 dias, em seguida visualizou-se o histograma para essas features, utilizando os comandos abaixo.
+
+```
+#calc adx
+database['adx']         = ta.ADX(database['High'],database['Low'],database['Close'],14)
+database['pos_dir_mov'] = ta.PLUS_DI(database['High'],database['Low'],database['Close'],14)
+database['neg_dir_mov'] = ta.MINUS_DI(database['High'],database['Low'],database['Close'],14)
+
+#calc retorno futuro
+database['target_var'] = database['Close'].pct_change(2).shift(-2)
+database.dropna(inplace=True)
+
+#visualization:
+database.loc[:,'adx':].hist(figsize = (15,10), rwidth = 0.95);
+```
+
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-2.PNG?raw=true"  width="800" height = "460">
+ 
+ ### Train-Test Split:
+ 
+ > Para realizar o treino e em seguida o teste do modelo, realizou-se a divisao da base em data-train e data-test.
+ 
+```
+#data train-test split:
+data_train = database.loc['2005-02-14':'2012-12-31']
+data_test = database.loc['2013-01-01':]
+
+#features x, train-test:
+x_train = data_train.loc[:,'adx':'neg_dir_mov']
+x_test = data_test.loc[:,'adx':'neg_dir_mov']
+```
+
+### Elbow Method Clusters:
+
