@@ -2,11 +2,11 @@
 
 __Bussines Problem:__
 
-> escrever aqui
+> Durante o desenvolvimento de estratégias de quant trading, que nada mais são do que sistemas objetivos para obter lucros no mercado de renda variável, decidindo a melhor hora para comprar ou vender determinado ativo com base em padrões estatísticos que tiveram uma boa performance no passado, torna-se necessário um estudo quantitativo sobre o indicador de timing ADX,DI+,DI-, idealizado por Willes Wilder, verificando se existe uma parametrização lucrativa para comprar ou vender o ativo PETR4 com base neste indicador.
 
 __Objetivo:__
 
-> escrever aqui 
+> Desenvolver uma estratégia quantitativa utilizando o conceito de clusterização, por meio do algoritmo k-means em seguida realizar uma análise bivariada entre um alvo de 5 dias para o retorno e os clusters verificando em um rank qual tendeu a ser mais lucrativo para a base de treinamento e em seguida validar isto em uma base de teste.
 
 __Autor:__  
    - Bruno Priantti.
