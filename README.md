@@ -1,4 +1,4 @@
-# Projeto ML Clustering de Indicadores de Timming para estrategia de Quant Trading.
+# Projeto ML Clustering de Indicadores de Timming para Estrategia de Quant Trading.
 
 __Bussines Problem:__
 
