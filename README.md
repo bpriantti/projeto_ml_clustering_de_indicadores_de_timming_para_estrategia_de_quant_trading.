@@ -89,3 +89,6 @@ database.dropna(inplace=True)
 ### Data Visualization:
 
 > Apos o tratamento dos dados no processo de data wralling, realizou-se o processo de Data Visualization, que consiste em visualizar a base de dados, para o caso atual foi realizado esta etapa para verificar possiveis incosistencia visivieis na serie historica.
+
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_asset_allocation_otimizacao_e_backtest_carteiras_de_investimento/blob/main/files_/image_1.png?raw=true"  width="800" height = "220">
