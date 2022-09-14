@@ -160,6 +160,10 @@ fig.update_layout(margin=dict(l=10, r=10, t=50, b=10))
 
 fig.show()
 ```
-   
+- Clusters Plot:
 <p align="center">
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/cluster_3d.png?raw=true"  width="740" height = "460">
+
+- Histograma Frequencia Clusters:
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-4.PNG?raw=true"  width="740" height = "300">
