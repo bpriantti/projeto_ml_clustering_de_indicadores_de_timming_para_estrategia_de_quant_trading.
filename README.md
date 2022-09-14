@@ -74,7 +74,7 @@ warnings.filterwarnings("ignore")
 
 ### Data Request:
 
-> Em seguida realizou-se o processo de data request, com o provedor de dados yfinace, utilizou-se a conexao API com o servidor, realizou-se o request da serie historica para o ativo PETR4, do periodo de 2005 a 2022, utilizou-se o codigo abaixo para esta etapa:
+> Em seguida realizou-se o processo de data request, com o provedor de dados yfinace, utilizou-se a conexão API com o servidor, realizou-se o request da série histórica para o ativo PETR4, do período de 2005 a 2022, utilizou-se o código abaixo para esta etapa:
 
 ```
 database = yf.download('PETR4.SA', '2005-1-1','2022-12-31')
@@ -82,7 +82,7 @@ database = yf.download('PETR4.SA', '2005-1-1','2022-12-31')
 
 ### Data Wralling:
 
-> Em seguida realizou-se o processo de data wralling, que consiste em tratamentos na base de dados para posterior uso dos dados para o desenvolvimento do modelo de machinne learning e backtesting, realizou-se esta etapa pelo codigo abaixo:
+> Em seguida realizou-se o processo de data wralling, que consiste em tratamentos na base de dados para posterior uso dos dados para o desenvolvimento do modelo de machine learning e backtesting, realizou-se esta etapa pelo código abaixo:
 
 ```
 database['Open']  = database.Open * database['Adj Close']/database['Close']
@@ -95,14 +95,14 @@ database.dropna(inplace=True)
 ```
 ### Data Visualization:
 
-> Apos o tratamento dos dados no processo de data wralling, realizou-se o processo de Data Visualization, que consiste em visualizar a base de dados, para o caso atual foi realizado esta etapa para verificar possiveis incosistencia visivieis na serie historica.
+> Após o tratamento dos dados no processo de data wralling, realizou-se o processo de Data Visualization, que consiste em visualizar a base de dados, para o caso atual foi realizada esta etapa para verificar possíveis inconsistência visíveis na série histórica.
 
 <p align="center">
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-1.png?raw=true"  width="800" height = "460">
    
 ### Feature Calculation: 
 
-> Nesta Etapa realizou-se o calculo das features DI+,DI-,ADX e Retorno Futuro em 2 dias, em seguida visualizou-se o histograma para essas features, utilizando os comandos abaixo.
+> Nesta Etapa realizou-se o cálculo das features DI+,DI-,ADX e Retorno Futuro em 2 dias, em seguida visualizou-se o histograma para essas features, utilizando os comandos abaixo.
 
 ```
 #calc adx
@@ -123,7 +123,7 @@ database.loc[:,'adx':].hist(figsize = (15,10), rwidth = 0.95);
  
  ### Train-Test Split:
  
- > Para realizar o treino e em seguida o teste do modelo, realizou-se a divisao da base em data-train e data-test.
+ > Para realizar o treino e em seguida o teste do modelo, realizou-se a divisão da base em data-train e data-test.
  
 ```
 #data train-test split:
@@ -144,7 +144,7 @@ x_test = data_test.loc[:,'adx':'neg_dir_mov']
 
 ### Treinando Modelo K-Means:
 
-> Em seguida realizou-se o treinando do modelo com 5 clusters, e visualizou-se os clustres em um plot 3d e tambem o histograma de frequencia para os clusters 
+> Em seguida realizou-se o treinando do modelo com 5 clusters, e visualizou-se os clusters em um plot 3d e também o histograma de frequência para os clusters. 
 
 ```
 #fit k-means model:
@@ -173,7 +173,7 @@ fig.show()
 
 ### Bivariate Analisys:
 
-> Com o objetivo de verificar qual cluster teve a melhor performance como regra de negociacao, realizou-se uma analise bivariada entre os clusters e a mediana dos retornos futuros em 2 dias, em seguida utilizou-se os comandos sort para rankear os clusters em mais e menos lucrativos, como demostrado na imagem abaixo.
+> Com o objetivo de verificar qual cluster teve a melhor performance como regra de negociação, realizou-se uma análise bivariada entre os clusters e a mediana dos retornos futuros em 2 dias, em seguida utilizou-se os comandos sort para rankear os clusters em mais e menos lucrativos, como demonstrado na imagem abaixo.
 
 ```
 #acessando os clusters
@@ -197,7 +197,7 @@ plt.show();
 <p align="center">
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-5.PNG?raw=true"  width="400" height = "320">
 
-> Utilizou-se como regra de negociacao, comprar a acao quando o clusters for 0,3 e vender quando o clusters for 4
+> Utilizou-se como regra de negociação, comprar a ação quando o clusters for 0,3 e vender quando o cluster for 4.
    
 ### Backtest Base de Teste:
    
@@ -212,6 +212,11 @@ plt.show();
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-7.png?raw=true"  width="680" height = "400">
    
 ### Backtest Base de Completa:
+
+> Em seguida realizou-se o backtest para a base completa, realizando o sizing de 30% alocado por negociação de um capital de R$ 100.000,00, obteve-se um lucro líquido fictício aproximado de 270.000,00 para um drawdown máximo de 10%.  
    
 <p align="center">
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-8.png?raw=true"  width="680" height = "440">
+   
+ 
+ 
