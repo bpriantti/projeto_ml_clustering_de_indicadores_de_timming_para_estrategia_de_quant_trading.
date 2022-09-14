@@ -40,6 +40,7 @@ ___
  - [Train Test Split](#train-test-split)
  - [Elbow Method Clusters](#elbow-method-clusters)
  - [Treinando Modelo K-Means](#treinando-modelo-k-means)
+ - [Bivariate Analisys](#bivariate-analisys)
 
 ### Importando Libraries:
 > inicialmente para este projeto realizou-se o import das bibliotecas que serao utilizadas para machine learning, data wralling e data visualization dos dados, utilizou-se os comandos abaixo para esta etapa:
@@ -166,4 +167,49 @@ fig.show()
 
 - Histograma Frequencia Clusters:
 <p align="center">
-   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-4.PNG?raw=true"  width="740" height = "300">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-4.PNG?raw=true"  width="680" height = "300">
+
+### Bivariate Analisys:
+
+> Com o objetivo de verificar qual cluster teve a melhor performance como regra de negociacao, realizou-se uma analise bivariada entre os clusters e a mediana dos retornos futuros em 2 dias, em seguida utilizou-se os comandos sort para rankear os clusters em mais e menos lucrativos, como demostrado na imagem abaixo.
+
+```
+#acessando os clusters
+data_train['clusters'] = clusters.labels_
+
+#rank por mediana:
+rank = data_train[['target_var','clusters']].groupby(['clusters']).median()
+rank.sort_values(by = ['target_var'], ascending = False)*100
+
+#plot:
+cmap = sns.diverging_palette(10, 133, as_cmap=True)
+g = sns.heatmap(data= rank.sort_values(by = ['target_var'], ascending = False), cmap='coolwarm_r',cbar=True,linewidths=.1,annot=True,fmt=".1%",annot_kws={'rotation':0},center=0.00,xticklabels=True)
+g.figure.set_size_inches(w=27/2.54, h=18/2.54)
+g.set_xticklabels(g.get_xticklabels(), rotation = 0, fontsize = 10)
+g.set_title('Rank Clusters Mediana Retornos Futuros')
+plt.show();
+```
+   
+- Rank Clusters Mediana Retornos Futuros:   
+   
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-5.PNG?raw=true"  width="400" height = "320">
+
+> Utilizou-se como regra de negociacao, comprar a acao quando o clusters for 0,3 e vender quando o clusters for 4
+   
+### Backtest Base de Teste:
+   
+> Verificando histograma de frequencia base de teste:
+ 
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-6.png?raw=true"  width="680" height = "400">
+   
+- Backtest em juros simples para a base de test:
+
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-7.png?raw=true"  width="680" height = "400">
+   
+### Backtest Base de Completa:
+   
+<p align="center">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-8.png?raw=true"  width="680" height = "400">
