@@ -41,6 +41,8 @@ ___
  - [Elbow Method Clusters](#elbow-method-clusters)
  - [Treinando Modelo K-Means](#treinando-modelo-k-means)
  - [Bivariate Analisys](#bivariate-analisys)
+ - [Backtest Base de Teste](#backtest-base-de-teste)
+ - [Backtest Base de Completa](#backtest-base-de-completa)
 
 ### Importando Libraries:
 > inicialmente para este projeto realizou-se o import das bibliotecas que serao utilizadas para machine learning, data wralling e data visualization dos dados, utilizou-se os comandos abaixo para esta etapa:
@@ -212,4 +214,4 @@ plt.show();
 ### Backtest Base de Completa:
    
 <p align="center">
-   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-8.png?raw=true"  width="800" height = "600">
+   <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-8.png?raw=true"  width="680" height = "440">
