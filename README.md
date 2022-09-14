@@ -133,5 +133,7 @@ x_test = data_test.loc[:,'adx':'neg_dir_mov']
 
 ### Elbow Method Clusters:
 
+> Utilizou-se o método de elbow method para verificar o número de clusters necessário, verificou-se que clusters entre 4 e 6 demonstraram bons resultados de agrupamento:
+   
 <p align="center">
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-3.png?raw=true"  width="800" height = "460">
