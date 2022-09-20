@@ -42,7 +42,7 @@ ___
  - [Treinando Modelo K-Means](#treinando-modelo-k-means)
  - [Bivariate Analisys](#bivariate-analisys)
  - [Backtest Base de Teste](#backtest-base-de-teste)
- - [Backtest Base de Completa](#backtest-base-de-completa)
+ - [Backtest Base Completa](#backtest-base-completa)
 
 ### Importando Libraries:
 > inicialmente para este projeto realizou-se o import das bibliotecas que serao utilizadas para machine learning, data wralling e data visualization dos dados, utilizou-se os comandos abaixo para esta etapa:
@@ -211,7 +211,7 @@ plt.show();
 <p align="center">
    <img src="https://github.com/bpriantti/projeto_ml_clustering_de_indicadores_de_timming_para_estrategia_de_quant_trading./blob/main/images/image-7.png?raw=true"  width="680" height = "400">
    
-### Backtest Base de Completa:
+### Backtest Base Completa:
 
 > Em seguida realizou-se o backtest para a base completa, realizando o sizing de 30% alocado por negociação de um capital de R$ 100.000,00, obteve-se um lucro líquido fictício aproximado de 270.000,00 para um drawdown máximo de 10%.  
    
