@@ -47,7 +47,7 @@ ___
 ### Importando Libraries:
 > inicialmente para este projeto realizou-se o import das bibliotecas que serao utilizadas para machine learning, data wralling e data visualization dos dados, utilizou-se os comandos abaixo para esta etapa:
 
-```
+```python
 #import libs:
 import pandas as pd
 import numpy as np
@@ -76,7 +76,7 @@ warnings.filterwarnings("ignore")
 
 > Em seguida realizou-se o processo de data request, com o provedor de dados yfinace, utilizou-se a conexão API com o servidor, realizou-se o request da série histórica para o ativo PETR4, do período de 2005 a 2022, utilizou-se o código abaixo para esta etapa:
 
-```
+```python
 database = yf.download('PETR4.SA', '2005-1-1','2022-12-31')
 ```
 
@@ -84,7 +84,7 @@ database = yf.download('PETR4.SA', '2005-1-1','2022-12-31')
 
 > Em seguida realizou-se o processo de data wralling, que consiste em tratamentos na base de dados para posterior uso dos dados para o desenvolvimento do modelo de machine learning e backtesting, realizou-se esta etapa pelo código abaixo:
 
-```
+```python
 database['Open']  = database.Open * database['Adj Close']/database['Close']
 database['High']  = database.High * database['Adj Close']/database['Close']
 database['Low']   = database.Low  * database['Adj Close']/database['Close']
@@ -104,7 +104,7 @@ database.dropna(inplace=True)
 
 > Nesta Etapa realizou-se o cálculo das features DI+,DI-,ADX e Retorno Futuro em 2 dias, em seguida visualizou-se o histograma para essas features, utilizando os comandos abaixo.
 
-```
+```python
 #calc adx
 database['adx']         = ta.ADX(database['High'],database['Low'],database['Close'],14)
 database['pos_dir_mov'] = ta.PLUS_DI(database['High'],database['Low'],database['Close'],14)
@@ -125,7 +125,7 @@ database.loc[:,'adx':].hist(figsize = (15,10), rwidth = 0.95);
  
  > Para realizar o treino e em seguida o teste do modelo, realizou-se a divisão da base em data-train e data-test.
  
-```
+```python
 #data train-test split:
 data_train = database.loc['2005-02-14':'2012-12-31']
 data_test = database.loc['2013-01-01':]
@@ -146,13 +146,13 @@ x_test = data_test.loc[:,'adx':'neg_dir_mov']
 
 > Em seguida realizou-se o treinando do modelo com 5 clusters, e visualizou-se os clusters em um plot 3d e também o histograma de frequência para os clusters. 
 
-```
+```python
 #fit k-means model:
 kmodel = KMeans(n_clusters = 5, random_state = 1)
 clusters = kmodel.fit(k)
 ```
 
-```
+```python
 #data visualization:
 df = data_train.loc[:,'adx':]
 
@@ -175,7 +175,7 @@ fig.show()
 
 > Com o objetivo de verificar qual cluster teve a melhor performance como regra de negociação, realizou-se uma análise bivariada entre os clusters e a mediana dos retornos futuros em 2 dias, em seguida utilizou-se os comandos sort para rankear os clusters em mais e menos lucrativos, como demonstrado na imagem abaixo.
 
-```
+```python
 #acessando os clusters
 data_train['clusters'] = clusters.labels_
 
